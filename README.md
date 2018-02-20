@@ -8,7 +8,7 @@ Shellegram uses session subscriptions to monitor activity and then sends an mess
 ## Setup
 Place the shellegram.rb file inside "/usr/share/metasploit-framework/plugins/" or a folder you have linked to this primary plugins folder (~/.msf4/plugins/).
 
-Then create a new bot in Telegram, get the BOT-TOKEN, add that bot to your Telegram and send a message to recognise you. See (https://core.telegram.org/bots#3-how-do-i-create-a-bot)
+Then create a new bot in Telegram, get the BOT-TOKEN, add that bot to your Telegram and send at least 2 messages to bot recognise you. See (https://core.telegram.org/bots#3-how-do-i-create-a-bot)
 
 ## Sample Usage
 The Shellegram plugin can be used like any other Metasploit plugin. Begin by loading Shellegram and setting your options. Then you will need to config to subscribe to session events. See the following example:
