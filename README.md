@@ -13,41 +13,44 @@ Then create a new bot in Telegram, get the BOT-TOKEN, add that bot to your Teleg
 ## Sample Usage
 The Shellegram plugin can be used like any other Metasploit plugin. Begin by loading Shellegram and setting your options. Then you will need to config to subscribe to session events. See the following example:
 <pre>
-  msf exploit(handler) > load shellegram
+msf exploit(multi/handler) > load shellegram 
+[*] Successfully loaded plugin: shellegram
+msf exploit(multi/handler) > shellegram_set_bot_token BOT-TOKEN
+[*] Setting the bot_token Telegram handle to BOT-TOKEN
+msf exploit(multi/handler) > shellegram_set_user USERNAME
+[*] Setting the user to USERNAME
+msf exploit(multi/handler) > shellegram_set_chat_id_by_user
+[*] Setting the chat_id to CHAT-ID
+msf exploit(multi/handler) > shellegram_set_source Shellegram_Test
+[*] Setting the source to Shellegram_Test
+msf exploit(multi/handler) > shellegram_save
+[*] Saving options to config file
+[+] All settings saved to ~/.msf4/Shellegram.yaml
+msf exploit(multi/handler) > shellegram_test
+[*] Sending tests message
+[+] message sent =)
+msf exploit(multi/handler) > shellegram_start
+[*] Session activity will be sent to you via Telegram API, chat_id: CHAT-ID
+[+] Shellegram Plugin Started, Monitoring Sessions
+msf exploit(multi/handler) > 
+[*] https://172.16.9.15:8443 handling request from 172.16.9.198; (UUID: a5tbn78w) Staging x86 payload (180825 bytes) ...
+[*] Meterpreter session 1 opened (172.16.9.15:8443 -> 172.16.9.198:30709) at 2018-02-20 15:25:19 -0300
+[*] GG! New session... Source: Shellegram_Test; Session: 1; Platform: windows; Type: meterpreter
 
-  [*] Successfully loaded plugin: shellegram
-
-  msf exploit(handler) > shellegram_set_bot_token <YOUR-BOT-TOKEN>
-
-  [*] Setting the bot_token Telegram handle to <YOUR-BOT-TOKEN>
-
-  msf exploit(handler) > shellegram_set_user <YOUR-USER>
-
-  [*] Setting the user to <YOUR-USER>
-
-  msf exploit(handler) > shellegram_set_chat_id_by_user
-
-  [*] Setting the chat_id <#chat_id>
-
-  msf exploit(handler) > shellegram_set_source <ANY-NAME-YOU-WANT>
-
-  [*] Setting the source to <ANY-NAME-YOU-WANT>
-
-  msf exploit(handler) > shellegram_save
-
-  [*] Saving options to config file
-  [+] All settings saved to ~/.msf4/Shellegram.yaml
-
-  msf exploit(handler) > shellegram_test 
-
-  [*] Sending tests message
-  [+] message sent =)
-
-  msf exploit(handler) > shellegram_start
-  
-  [*] Session activity will be sent to you via Telegram API, chat_id: <#chat_id>
-  [+] Shellegram Plugin Started, Monitoring Sessions
+msf exploit(multi/handler) > sessions -K
+[*] Killing all sessions...
+[*] 172.16.9.198 - Meterpreter session 1 closed.
+[*] F*ck Man You have made a huge mistake... Source: Shellegram_Test; Session: 1; Reason: meterpreter is shutting down - unknown, may have been killed with sessions -k
+[*] 172.16.9.198 - Meterpreter session 1 closed.  Reason: Died
+[*] F*ck Man You have made a huge mistake... Source: Shellegram_Test; Session: 1; Reason: meterpreter is shutting down - Died
+msf exploit(multi/handler) > shellegram_stop 
+[*] Stopping the monitoring of sessions to Telegram
 </pre>
+
+This is how message are send to your Telegram Bot
+
+<p align="center"><img src="./pictures/telegram.jpg" alt="Shellegram Message"></p>
+
 If you have any questions, use help shellegram:
 
 shellegram Commands
@@ -66,3 +69,4 @@ shellegram Commands
     shellegram_start                Start Shellegram Plugin after saving settings.
     shellegram_stop                 Stop monitoring for new sessions.
     shellegram_test                 Send test message to make sure confoguration is working.
+
